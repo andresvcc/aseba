@@ -20,8 +20,9 @@ jobs:
           submodules: true
 
       - name: Setup vcpkg and install dependencies
+        shell: pwsh
         run: |
-          if exist C:\vcpkg rmdir /S /Q C:\vcpkg
+          if (Test-Path "C:\vcpkg") { Remove-Item -Recurse -Force "C:\vcpkg" }
           git clone https://github.com/Mobsya/vcpkg.git C:\vcpkg
           cd C:\vcpkg
           git fetch --unshallow
