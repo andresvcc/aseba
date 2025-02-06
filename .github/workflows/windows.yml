@@ -1,4 +1,4 @@
-# v2
+# v3
 name: Build Thymio Suite for Windows
 
 on:
@@ -27,7 +27,7 @@ jobs:
           cd C:\vcpkg
           git fetch --unshallow
           .\bootstrap-vcpkg.bat
-          .\vcpkg.exe install openssl zlib boost-program-options boost-filesystem boost-asio boost-date-time boost-thread
+          .\vcpkg.exe install --triplet x64-windows openssl zlib boost-program-options boost-filesystem boost-asio boost-date-time boost-thread
 
       - name: Configure project with CMake
         run: |
