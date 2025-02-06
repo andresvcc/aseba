@@ -43,7 +43,7 @@ jobs:
           ctest --output-on-failure --build-config Release
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v3.3.1
+        uses: actions/upload-artifact@v4
         with:
           name: ThymioSuite
           path: build\ThymioSuite-*.exe
