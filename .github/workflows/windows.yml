@@ -1,4 +1,4 @@
-#v2
+# v2
 name: Build Thymio Suite for Windows
 
 on:
@@ -21,8 +21,10 @@ jobs:
 
       - name: Setup vcpkg and install dependencies
         run: |
+          if exist C:\vcpkg rmdir /S /Q C:\vcpkg
           git clone https://github.com/Mobsya/vcpkg.git C:\vcpkg
           cd C:\vcpkg
+          git fetch --unshallow
           .\bootstrap-vcpkg.bat
           .\vcpkg.exe install openssl zlib boost-program-options boost-filesystem boost-asio boost-date-time boost-thread
 
@@ -30,7 +32,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DCREATE_QT_CONF_FILE=ON
+          cmake .. -G "Visual Studio 17 2022" -A x64 -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DCREATE_QT_CONF_FILE=ON
 
       - name: Build project
         run: |
