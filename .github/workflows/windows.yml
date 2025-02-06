@@ -4,7 +4,7 @@ name: Build Thymio Suite for Windows
 on:
   push:
     branches:
-      - master
+      - launcher-font-macos-fix
     tags:
       - "2.*"
   pull_request:
