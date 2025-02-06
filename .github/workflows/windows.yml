@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
+    tags:
+      - "2.*"
   pull_request:
-  tags:
-    - "2.*"
 
 jobs:
   build:
